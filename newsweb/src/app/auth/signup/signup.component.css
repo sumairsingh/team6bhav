@@ -1,0 +1,21 @@
+.example-container{
+    display: flex;
+    flex-direction: column;
+    width:400px;
+}
+.signup_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.error-text{
+    margin-top: -15px;
+    color: red;
+}
+.form-error-text{
+    text-align: center;
+    color: red;
+    margin-top: 50px;
+}

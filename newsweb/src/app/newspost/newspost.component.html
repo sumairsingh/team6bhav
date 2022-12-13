@@ -1,0 +1,28 @@
+
+<div class="news-post">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{post.title}}</mat-card-title>
+          <mat-card-subtitle>{{post.author}}</mat-card-subtitle>
+         <mat-card-subtitle>{{post.time}}</mat-card-subtitle>
+         <img mat-card-avatar src={{post.urlToImage}}>
+      
+        </mat-card-header>
+        <img mat-card-image src={{post.urlToImage}} alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+           {{post.content}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+         <div class="actions">
+            <a mat-button>
+                <mat-icon aria-hidden="false" aria-label="favourite icon">favorite_border</mat-icon>
+            </a>
+              <a mat-button href={{post.url}} target="blank" >
+                <mat-icon aria-hidden="false" aria-label="favourite icon">open_in_new</mat-icon>
+              </a>
+         </div>
+        </mat-card-actions>
+      </mat-card>
+</div>

@@ -1,0 +1,57 @@
+<div class="navbar">
+  <mat-toolbar>
+    <a routerLink="/">
+     <span><img src="../../assets/img/logo.png" class="nav_logo"/></span>
+     <span style="font-size: 14px;color:orange">News</span>
+    </a>
+    <span class="example-spacer"></span>
+    <ng-container *ngIf="signedin|async">
+     <div class="searchbar">
+       <form (submit)="onFormSubmit($event)"  >
+        <span><input type="text" class="search_field" (input)="onInput($event)" placeholder="search news .." ></span>
+      
+        <button mat-icon-button>
+            <mat-icon>search</mat-icon>
+        </button>
+       </form>
+       </div>
+       <span class="example-spacer"></span>
+     <button mat-icon-button [matMenuTriggerFor]="favorite" aria-label="Example icon-button with a menu" style="margin-right: 10px;">
+        <mat-icon>favorite</mat-icon>
+     </button>
+     <span style="margin-right: 15px;">{{menus.username}}</span>
+     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="margin-right: 10px;">
+         <img mat-card-avatar style="width: 50px;height: 50px;border-radius: 50%;" src={{menus.userUrl}}/>
+     </button>
+       <mat-menu #menu="matMenu">
+         <button mat-menu-item (click)="signOut()">
+           <mat-icon>logout</mat-icon>
+          <a routerLink="/signout"> <span>Logout</span></a>
+         </button>
+       </mat-menu>
+    
+       <mat-menu #favorite="matMenu">
+         <button mat-menu-item>
+          <span>news1</span>
+         </button>
+         <button mat-menu-item>
+             <span>news1 </span>
+            </button>
+            <button mat-menu-item>
+             <span>news2</span>
+            </button>
+            <button mat-menu-item>
+             <span>news3</span>
+            </button>
+       </mat-menu>
+    </ng-container>
+       <div>
+         <ng-container *ngIf="!(signedin|async)">
+           <a routerLink="/signin" class="links" style="margin-right: 15px;" routerLinkActive="active"> <span>Sign In</span></a>
+           <a routerLink="/signup" class="links" routerLinkActive="active"><span>Sign Up</span></a>
+         </ng-container>
+       </div>
+   </mat-toolbar>
+
+</div>
+

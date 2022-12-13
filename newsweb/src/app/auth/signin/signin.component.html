@@ -1,0 +1,24 @@
+<div class="signup_block" >
+    <h1>Login</h1>
+   <form class="example-container"[formGroup]="authForm" (ngSubmit)="onSubmit()" >
+    <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input matInput [type]="hide  ? 'text' : 'text'" formControlName="username">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+      <button mat-flat-button color="primary">Submit</button>
+      <div *ngIf="authForm.errors" class="error-text">
+          <p >
+              Invalid username or password
+         </p>
+      </div>
+   </form>
+</div>
+
+

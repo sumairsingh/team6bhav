@@ -1,0 +1,8 @@
+.news-post{
+   width: 600px;
+    margin: 30px;
+}
+.actions{
+    display: flex;
+    justify-content: space-between;
+}

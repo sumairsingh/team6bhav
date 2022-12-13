@@ -1,0 +1,51 @@
+<div class="signup_block">
+    <h1>Create an Account</h1>
+   <form class="example-container"[formGroup]="authForm" (ngSubmit)="onSubmit()"  >
+    <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input matInput [type]="hide ? 'text' : 'text'" formControlName="username">
+    </mat-form-field>
+    <div *ngIf="authForm.get('username').errors && authForm.get('username').dirty && authForm.get('username').touched ">
+        <p class="error-text" *ngIf="authForm.get('username').errors.required" >username required</p>
+        <p class="error-text" *ngIf="authForm.get('username').errors.minlength" >minimum 3 characters</p>
+        <p class="error-text" *ngIf="authForm.get('username').errors.maxlength" >maximum 20 characters</p>
+        <p class="error-text" *ngIf="authForm.get('username').errors.pattern" >Invalid format</p>
+        <p class="error-text" *ngIf="authForm.get('username').errors.nonUniqueUsername" >username is taken</p>
+        <p class="error-text" *ngIf="authForm.get('username').errors.noConnection" >Check internet connection</p>
+
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div *ngIf="authForm.get('password').errors && authForm.get('password').dirty && authForm.get('password').touched ">
+        <p class="error-text" *ngIf="authForm.get('password').errors.required" >username required</p>
+        <p class="error-text" *ngIf="authForm.get('password').errors.minlength" >minimum 6 characters</p>
+        <p class="error-text" *ngIf="authForm.get('password').errors.maxlength" >maximum 20 characters</p>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Confirm you password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordConfirmation">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    <div *ngIf="authForm.get('password').touched &&
+    authForm.get('passwordConfirmation').touched &&
+    authForm.errors.passwordsDontMatch">
+    <p *ngIf="authForm.errors.passwordsDontMatch==true" class="error-text">password dont match</p>
+    </div>
+      <button mat-flat-button color="primary">Submit</button>
+      <p class="form-error-text" *ngIf="authForm.errors.noConnection">No Internet Connection,Failed to signup
+          <mat-icon><span class="material-icons">
+            wifi_off
+            </span></mat-icon>
+      </p>
+      <p class="form-error-text" *ngIf="authForm.errors.unknownError">Failed to signup
+    </p>
+   </form>
+</div>
